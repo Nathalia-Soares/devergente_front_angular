@@ -31,6 +31,28 @@ export class LoginComponent {
       senha: this.login.value.senha
     };
   
+    this.http.post<any>('http://localhost:8080/auth', loginData)
+      .subscribe(response => {
+        if (response && response.token) {
+          localStorage.setItem('token', response.token);
+          alert("Login realizado com sucesso");
+          setTimeout(() => {
+            this.router.navigate(['feed']);
+          }, 3000);
+        } else {
+          alert("Falha no login");
+        }
+      }, error => {
+        alert("Erro no login");
+      });
+  }
+
+/*  loginUsuario() {
+    const loginData = {
+      email: this.login.value.email,
+      senha: this.login.value.senha
+    };
+  
     this.http.get<any[]>(`http://localhost:3000/usuario?email=${loginData.email}`)
       .subscribe(usuarios => {
         if (usuarios.length === 0) {
@@ -48,5 +70,5 @@ export class LoginComponent {
           }
         }
       });
-  }
+  } */
 }
