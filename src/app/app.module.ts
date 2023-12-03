@@ -64,7 +64,6 @@ import { ComentariosInputEdicaoComponent } from './paginas/comentarios/comentari
     ResetSenhaComponent,
     VerificacaoEmailComponent,
     UsuarioComponent,
-    FeedPostagensComponent,
     CriarPostagemComponent,
     VerUsuarioComponent,
     EditarUsuarioComponent,
@@ -90,7 +89,8 @@ import { ComentariosInputEdicaoComponent } from './paginas/comentarios/comentari
     ComentariosComponent,
     ComentarioComponent,
     ComentariosInputComponent,
-    ComentariosInputEdicaoComponent
+    ComentariosInputEdicaoComponent,
+    FeedPostagensComponent
   ],
   imports: [
     CommonModule,

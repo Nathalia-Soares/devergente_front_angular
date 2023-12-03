@@ -5,7 +5,6 @@ import { LoginComponent } from './paginas/login/login.component';
 import { CadastroComponent } from './paginas/cadastro/criar-usuario/cadastro.component';
 import { ResetSenhaComponent } from './paginas/reset-senha/reset-senha/reset-senha.component';
 import { VerificacaoEmailComponent } from './paginas/verificacao-email/verificacao-email/verificacao-email.component';
-import { FeedPostagensComponent } from './paginas/postagens/feed-postagens/feed-postagens/feed-postagens.component';
 import { VerUsuarioComponent } from './paginas/cadastro/ver-usuario/ver-usuario.component';
 import { EditarUsuarioComponent } from './paginas/cadastro/editar-usuario/editar-usuario.component';
 import { ExcluirUsuarioComponent } from './paginas/cadastro/excluir-usuario/excluir-usuario.component';
@@ -25,6 +24,7 @@ import { VagaComponent } from './paginas/vagas/vaga/vaga.component';
 import { EditarVagaComponent } from './paginas/vagas/editar-vaga/editar-vaga.component';
 import { ExcluirVagaComponent } from './paginas/vagas/excluir-vaga/excluir-vaga.component';
 import { ComentariosComponent } from './paginas/comentarios/comentarios/comentarios.component';
+import { FeedPostagensComponent } from './paginas/postagens/feed-postagens/feed-postagens/feed-postagens.component';
 
 const routes: Routes = [
   {
@@ -123,7 +123,7 @@ const routes: Routes = [
   {
     path: 'postagem/:id/comentarios',
     component: ComentariosComponent
-  }
+  },
 ];
 
 @NgModule({
