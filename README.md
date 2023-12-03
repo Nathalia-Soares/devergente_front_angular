@@ -1,27 +1,40 @@
-# Devergente
+# DeVerGente - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+Atividade desenvolvida para o Projeto Integrador II, nas disciplinas Engenharia de Software II, Desenvolvimento Web II e Banco de Dados Relacional.
+O intuito deste projeto é desenvolver uma rede social voltada para o público Neurodivergente, promovendo a inclusão tanto social, quanto no mercado de trabalho, através da oferta de vagas de emprego voltadas à este público.
+Neste repositório, você encontrará o frontend da aplicação.
 
-## Development server
+Para o desenvolvimento deste projeto, foi utilizado o framework Angular versão 16.0.0 e a IDE Visual Studio Code versão 1.84.2.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Sobre o Projeto
 
-## Code scaffolding
+## Requisitos e instalação
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para o funcionamento da aplicação, é necessário a instalação do NodeJs, disponível neste [link](https://nodejs.org/en/download)
 
-## Build
+Após a instalação do mesmo, é necessário a instalação do Angular. Para isso, é necessário abrir um terminal (cmd, PowerShell ou Bash) e executar o seguinte comando:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   ```shell
+   npm install -g @angular/cli
+   ``````
+Feito isso, é necessário clonar o repositório na máquina. Para isso, execute o código abaixo no terminal:
+  **Clonando o Repositório:**
+     ```shell
+     git clone https://github.com/devergente/frontend.git
+     ``````
+Após clonar o repositório, dentro da pasta src, abra o termianl e execute o código abaixo:
 
-## Running unit tests
+   ```shell
+   npm run start
+   ``````
+A mensagem "Compliled Successfully" aparecerá e você poderá acessar a aplicação no seu navegador acessando:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```shell
+   http://localhost:4200/
+   ``````
 
-## Running end-to-end tests
+## Licença
+  Este projeto é distribuído sob a licença MIT. Consulte o arquivo LICENSE para obter mais informações.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Contato
+  Se você tiver alguma dúvida, sugestão ou precisar de suporte, entre em contato conosco em nathaliasoaresoliver@gmail.com
