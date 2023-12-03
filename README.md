@@ -20,7 +20,7 @@ Após a instalação do mesmo, é necessário a instalação do Angular. Para is
 Feito isso, é necessário clonar o repositório na máquina. Para isso, execute o código abaixo no terminal:
   **Clonando o Repositório:**
 ```shell
-  git clone https://github.com/devergente/frontend.git
+git clone https://github.com/devergente/frontend.git
 ````
 Após clonar o repositório, dentro da pasta src, abra o termianl e execute o código abaixo:
 
