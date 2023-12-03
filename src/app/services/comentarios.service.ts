@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Comentario } from '../interfaces/comentario';
 import { environment } from './../enviroments/enviroments';
 import { map } from 'rxjs/operators';
+import { PostagensService } from './postagens.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,11 @@ export class ComentariosService {
 
   private readonly API = `${environment.API_URL}/comentario`
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private postagem: PostagensService) { }
 
-  listarComentarios(): Observable<Comentario[]> {
+  listarComentarios(postagemId: number): Observable<Comentario[]> {
+    const url = `${this.API}/comentario.${postagemId}`
     return this.http.get<Comentario[]>(this.API)
   }
 

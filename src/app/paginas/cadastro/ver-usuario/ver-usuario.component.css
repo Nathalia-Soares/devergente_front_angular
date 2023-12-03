@@ -1,3 +1,22 @@
+@font-face {
+    font-family: 'OpenDyslexic';
+    src:  url('./../../../../assets/fonts/OpenDyslexic-Regular.otf'),
+          url('./../../../../assets/fonts/OpenDyslexic-Bold.otf'),
+          url('./../../../../assets/fonts/OpenDyslexic-BoldItalic.otf'),
+          url('./../../../../assets/fonts/OpenDyslexic-Italic.otf');
+       
+    /* Outros formatos de arquivo podem ser adicionados aqui */
+  }
+ 
+ :root {
+     --azul: #55ACEE;
+     --verde: #12BD12;
+     --laranja: #FF7800;
+     --roxo: #800080;
+     --vermelho: #F7000F;
+     --amarelo: #FFCD32;
+   }
+
 * {
     margin: 0;
     padding: 0;
@@ -12,10 +31,26 @@ body {
 }
 
 .perfil-usuario {
-    background: linear-gradient(#FF7800, transparent);
     color: #333;
     padding-top: 4em;
 }
+
+.perfil-usuario-neurodivergente {
+    background: linear-gradient(#800080, #FF7800, transparent);
+}
+
+.perfil-usuario-familiar {
+    background: linear-gradient(#FF7800, #FFCD32, transparent);
+}
+
+.perfil-usuario-profissional {
+    background: linear-gradient(#F7000F, #FF7800, transparent);
+}
+
+.perfil-usuario-empregador {
+    background: linear-gradient(#12BD12, #55ACEE, transparent);
+}
+
 .perfil-usuario .sombra {
     position: absolute;
     display: block;

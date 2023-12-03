@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { validadorUnicaSelecao } from 'src/app/enviroments/unica-selecao';
+import { VagasService } from 'src/app/services/vagas.service';
 
 @Component({
   selector: 'app-menu-vagas',
@@ -14,8 +15,8 @@ export class MenuVagasComponent {
 
   constructor(private formBuilder: FormBuilder, 
     private http: HttpClient, 
+    private vagasService: VagasService,
     private router: Router) {
-
   }
 
   ngOnInit() {
@@ -39,15 +40,24 @@ export class MenuVagasComponent {
       return;
     }
   
-    if (criarVaga) {
-      this.router.navigate(['/criar-vaga']);
-    } else if (verVaga) {
-      this.router.navigate(['/vaga/1']);
-    } else if (editarVaga) {
-      this.router.navigate(['/editar-vaga/1']);
-    } else if (excluirVaga) {
-      this.router.navigate(['/excluir-vaga/1']);
-    }
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+    const usuarioId = usuario.id;
+    
+
+    this.vagasService.listarVagas().subscribe(vagas => {
+      const vagasDoUsuario = vagas.filter(vaga => vaga.usuario.id === usuarioId);
+      const idsVagasDoUsuario = vagasDoUsuario.map(vaga => vaga.id);
+    
+      if (criarVaga) {
+        this.router.navigate(['/criar-vaga']);
+      } else if (verVaga) {
+        this.router.navigate(['/vaga', ...idsVagasDoUsuario]);
+      } else if (editarVaga) {
+        this.router.navigate(['/editar-vaga', ...idsVagasDoUsuario]);
+      } else if (excluirVaga) {
+        this.router.navigate(['/excluir-vaga', ...idsVagasDoUsuario]);
+      }
+    });
   }
 
   cancelar() {

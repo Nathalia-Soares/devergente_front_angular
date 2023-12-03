@@ -41,12 +41,13 @@ export class EditarUsuarioComponent {
 
     this.formularioAtualizacao = this.formBuilder.group ({
       id: [this.usuario.id],
-      nome: [''],
-      username: [[''], [Validators.pattern(/^[^\s]*$/)]],
-      email: ['', Validators.email],
+      nome: ['', [Validators.maxLength(196)]],
+      username: [[''], [Validators.pattern(/^[^\s]*$/), Validators.maxLength(32)]],
+      email: ['', Validators.email, Validators.maxLength(100)],
       senha: ['',[ 
         Validators.minLength(8),
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]],
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/),
+        Validators.maxLength(16)]],
       data_nascimento: [''],
       img_perfil: '',
       img_capa: '',

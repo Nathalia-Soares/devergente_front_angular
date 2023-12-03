@@ -79,7 +79,7 @@
       "id": 8
     },
     {
-      "nome": "Nathalia Soares de Oliveira",
+      "nome": "Nathalia Soares",
       "username": "Eni_Essi",
       "email": "eni_essi@teste.com.br",
       "senha": "Teste@1234",
@@ -250,6 +250,16 @@
       },
       "conteudo": "kkkkkkkkkkkk",
       "imagemUrl": ""
+    },
+    {
+      "id": 9,
+      "usuario": {
+        "id": 13,
+        "nome": "tttttttttttttttt",
+        "username": "eeeeeeeeeeeeeeee"
+      },
+      "conteudo": "Olá mundo!!!",
+      "imagemUrl": ""
     }
   ],
   "curriculum": [
@@ -281,6 +291,36 @@
       "data_fim": "2023-11-01T03:00:00.000Z",
       "resumo": "Loren Ipsum.",
       "id": 1
+    },
+    {
+      "usuario": {
+        "id": 8,
+        "nome": "yyyyyyyyyyy",
+        "username": "5555555555"
+      },
+      "endereco": {
+        "cep": "58407-084",
+        "logradouro": "2ª Travessa São Luiz",
+        "complemento": "",
+        "numero": "74",
+        "referencia": "",
+        "bairro": "Monte Castelo",
+        "cidade": "Campina Grande",
+        "uf": "PB"
+      },
+      "telefone": "",
+      "telefone2": "11999999999",
+      "area_interesse": "Teste",
+      "habilidades": "Teste",
+      "formacao": "ensino-superior-incompleto",
+      "instituicao_ensino": "Teste",
+      "experiencia_anterior": "true",
+      "cargo": "Teste",
+      "empresa": "Teste",
+      "data_inicio": "2017-06-22T03:00:00.000Z",
+      "data_fim": "2023-12-01T03:00:00.000Z",
+      "resumo": "Teste teste",
+      "id": 2
     }
   ],
   "vaga": [
@@ -299,7 +339,49 @@
       "status_vaga": false,
       "empresa": "Fatec Cotia",
       "id": 1
+    },
+    {
+      "usuario": {
+        "id": 8,
+        "nome": "yyyyyyyyyyy",
+        "username": "5555555555",
+        "img_perfil": ""
+      },
+      "data_abertura": "2023-12-03T03:00:00.000Z",
+      "data_fechamento": "2023-12-27T03:00:00.000Z",
+      "titulo": "Teste",
+      "descricao": "Teste Teste",
+      "requisitos": "Teste Teste",
+      "status_vaga": false,
+      "empresa": "Teste",
+      "id": 2
     }
   ],
-  "comentario": []
+  "comentario": [
+    {
+      "id": 8,
+      "postagem": {
+        "id": 4
+      },
+      "usuario": {
+        "id": 9,
+        "username": "Eni_Essi",
+        "img_perfil": "https://media.licdn.com/dms/image/D4D03AQEOOTtrj7onxA/profile-displayphoto-shrink_800_800/0/1695794023514?e=1706745600&v=beta&t=Iz2jcrgqiIQh9CD4h8-0nPHcfOO67qILbzFk6BxylyI"
+      },
+      "conteudo": "Teste...",
+      "data": "2023-12-03T19:32:57.263Z"
+    },
+    {
+      "id": 9,
+      "postagem": {
+        "id": 6
+      },
+      "usuario": {
+        "id": 8,
+        "username": "5555555555"
+      },
+      "conteudo": "Força, amiga!!!",
+      "data": "2023-12-03T20:06:02.498Z"
+    }
+  ]
 }

@@ -41,16 +41,24 @@ export class VerUsuarioComponent {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.usuarioService.buscarPorId(parseInt(id!)).subscribe((usuario) => {
-      this.usuario = usuario;
+    const usuarioString = localStorage.getItem('usuario');
+    if (usuarioString) {
+      this.usuario = JSON.parse(usuarioString);
+    }
   
-      if (this.usuario.id !== undefined) {
-        this.postagemService.buscarPorUsuarioId(this.usuario.id).subscribe((postagens) => {
-          this.postagens = postagens;
-        });
-      }
-    });
+    const idString = localStorage.getItem('usuarioId');
+    if (idString) {
+      const idNumber = Number(idString);
+      this.usuarioService.buscarPorId(idNumber).subscribe((usuario) => {
+        this.usuario = usuario;
+  
+        if (this.usuario.id !== undefined) {
+          this.postagemService.buscarPorUsuarioId(this.usuario.id).subscribe((postagens) => {
+            this.postagens = postagens;
+          });
+        }
+      });
+    }
   }
 
   exibirPerfil() {

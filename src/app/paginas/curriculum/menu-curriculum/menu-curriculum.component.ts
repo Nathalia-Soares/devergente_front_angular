@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { validadorUnicaSelecao } from 'src/app/enviroments/unica-selecao';
+import { CurriculumService } from 'src/app/services/curriculum.service';
 
 @Component({
   selector: 'app-menu-curriculum',
@@ -14,6 +15,7 @@ export class MenuCurriculumComponent {
 
   constructor(private formBuilder: FormBuilder, 
     private http: HttpClient, 
+    private curriculumService: CurriculumService,
     private router: Router) {
 
   }
@@ -38,16 +40,24 @@ export class MenuCurriculumComponent {
       location.reload();
       return;
     }
+
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+    const usuarioId = usuario.id;
   
-    if (criarCurriculum) {
-      this.router.navigate(['/criar-curriculum']);
-    } else if (verCurriculum) {
-      this.router.navigate(['/curriculum/1']);
-    } else if (editarCurriculum) {
-      this.router.navigate(['/editar-curriculum/1']);
-    } else if (excluirCurriculum) {
-      this.router.navigate(['/excluir-curriculum/1']);
-    }
+    this.curriculumService.listarCurriculuns().subscribe(curriculuns => {
+      const curriculunsDoUsuario = curriculuns.filter(curriculum => curriculum.usuario.id === usuarioId);
+      const idsCurriculunsDoUsuario = curriculunsDoUsuario.map(vaga => vaga.id);
+    
+      if (criarCurriculum) {
+        this.router.navigate(['/criar-curriculum']);
+      } else if (verCurriculum) {
+        this.router.navigate(['/curriculum', ...idsCurriculunsDoUsuario]);
+      } else if (editarCurriculum) {
+        this.router.navigate(['/editar-curriculum', ...idsCurriculunsDoUsuario]);
+      } else if (excluirCurriculum) {
+        this.router.navigate(['/excluir-curriculum', ...idsCurriculunsDoUsuario]);
+      }
+    });
   }
 
   cancelar() {

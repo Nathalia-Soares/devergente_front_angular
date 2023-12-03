@@ -36,17 +36,30 @@ export class VagaComponent {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.vagaService.buscarPorId(parseInt(id!)).subscribe((vaga) => {
-      this.vaga = vaga;
-      console.log('data_abertura: ', this.vaga.data_abertura);
-      console.log('data_fechamento: ', this.vaga.data_fechamento);
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id === null) {
+      alert('ID da vaga não fornecido');
+      this.router.navigate(['/feed']);
+      return;
+    }
+  
+    this.vagaService.buscarPorId(+id).subscribe((vaga) => {
+      console.log('ID da vaga: ', vaga.id);
+      if (!vaga) {
+        alert('Vaga não encontrada');
+        this.router.navigate(['/feed']);
+      } else {
+        this.vaga = vaga;
+        console.log('data_abertura: ', this.vaga.data_abertura);
+        console.log('data_fechamento: ', this.vaga.data_fechamento);
+      }
+    }, (error) => {
+      alert('Ocorreu um erro ao buscar a vaga: ' + error.message);
     });
   }
 
   exibirVaga() {
     this.vagaService.listarVaga(this.vaga).subscribe((vaga) => {
-      // Navegar para o perfil
       this.router.navigate(['/vaga', vaga.id]);
     });
   }

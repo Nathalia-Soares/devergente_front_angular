@@ -60,7 +60,7 @@ export class ComentariosInputComponent {
           username: '',
           img_perfil: '',
         },
-        conteudo: ['', [Validators.required, Validators.maxLength(255)]],
+        conteudo: ['', [Validators.required, Validators.maxLength(512)]],
         data: new Date()
       });
   }
@@ -70,9 +70,16 @@ export class ComentariosInputComponent {
     this.postagemService.buscarPorId(parseInt(id!)).subscribe((postagem) => {
       this.postagem = postagem;
   
+      const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+  
       this.formularioComentario.patchValue({
         postagem: {
           id: this.postagem.id,
+        },
+        usuario: {
+          id: usuario.id,
+          username: usuario.username,
+          img_perfil: usuario.img_perfil,
         },
         conteudo: this.textoInicial
       });

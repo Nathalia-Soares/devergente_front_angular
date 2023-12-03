@@ -28,33 +28,38 @@ export class CriarCurriculumComponent {
   }
 
   ngOnInit() {
+    
+    const usuarioData = localStorage.getItem('usuario');
+    let usuario = usuarioData ? JSON.parse(usuarioData) : null;
+
     this.formularioCurriculum = this.formBuilder.group({
       usuario: this.formBuilder.group({
-        nome: [''],
-        username: [''],
+        id: [usuario ? usuario.id : ''],
+        nome: [usuario ? usuario.nome : ''],
+        username: [usuario ? usuario.username : ''],
       }),
       endereco: this.formBuilder.group({
         cep: ['', [Validators.required, Validators.maxLength(9), Validators.pattern(/^\d{5}-\d{3}$/)]],
-        logradouro: ['', [Validators.required, Validators.maxLength(50)]],
-        complemento: ['', [Validators.maxLength(50)]],
-        numero: ['', [Validators.required, Validators.maxLength(5)]],
-        referencia: ['', [Validators.required, Validators.maxLength(50)]],
+        logradouro: ['', [Validators.required, Validators.maxLength(196)]],
+        complemento: ['', [Validators.maxLength(128)]],
+        numero: ['', [Validators.required, Validators.maxLength(12)]],
+        referencia: ['', [Validators.required, Validators.maxLength(128)]],
         bairro: ['', [Validators.required, Validators.maxLength(50)]],
         cidade: ['', [Validators.required, Validators.maxLength(50)]],
         uf: ['', [Validators.required, Validators.maxLength(2)]]
       }),
-      telefone: ['', [Validators.required, Validators.pattern(/^\d{11}$/)]],
-      telefone2: ['', [Validators.pattern(/^\d{11}$/)]],
-      area_interesse: ['', [Validators.required, Validators.maxLength(50)]],
-      habilidades: ['', [Validators.required, Validators.maxLength(50)]],
-      formacao: ['', [Validators.required]],
-      instituicao_ensino: ['', [Validators.maxLength(50)]],
+      telefone: ['', [Validators.required, Validators.pattern(/^\d{11}$/), Validators.maxLength(13)]],
+      telefone2: ['', [Validators.pattern(/^\d{11}$/)], Validators.maxLength(13)],
+      area_interesse: ['', [Validators.required, Validators.maxLength(50)], Validators.maxLength(64)],
+      habilidades: ['', [Validators.required, Validators.maxLength(50)], Validators.maxLength(256)],
+      formacao: ['', [Validators.required], Validators.maxLength(128)],
+      instituicao_ensino: ['', [Validators.maxLength(256)]],
       experiencia_anterior: ['', [Validators.required]],
-      cargo: ['', [Validators.maxLength(50)]],
-      empresa: ['', [Validators.maxLength(50)]],
+      cargo: ['', [Validators.maxLength(64)]],
+      empresa: ['', [Validators.maxLength(128)]],
       data_inicio: [''],
       data_fim: [''],
-      resumo: ['', [Validators.required, Validators.maxLength(500)]],
+      resumo: ['', [Validators.required, Validators.maxLength(512)]],
     });
 
     this.formularioCurriculum.get('endereco.cep')?.statusChanges

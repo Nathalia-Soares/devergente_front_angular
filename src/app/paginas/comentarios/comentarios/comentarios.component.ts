@@ -51,16 +51,20 @@ export class ComentariosComponent {
     private router: Router,
     private dialog: MatDialog) { }
 
-  ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.postagemService.buscarPorId(parseInt(id!)).subscribe((postagem) => {
-      this.postagem = postagem;
-    });
-
-    this.comentariosService.listarComentarios().subscribe((listaComentarios) => {
-      this.listaComentarios = listaComentarios;
-    });
-  }
+    ngOnInit(): void {
+      const id = this.route.snapshot.paramMap.get('id');
+      if (id) {
+        this.postagemService.buscarPorId(+id).subscribe((postagem) => {
+          this.postagem = postagem;
+    
+          if (this.postagem && this.postagem.id !== undefined) {
+            this.comentariosService.listarComentarios(this.postagem.id).subscribe((comentarios) => {
+              this.listaComentarios = comentarios.filter(comentario => comentario.postagem.id === this.postagem.id);
+            });
+          }
+        });
+      }
+    }
 
   comentarios(id: number | undefined) {
     this.router.navigate(['/postagem/', id, '/comentarios']);

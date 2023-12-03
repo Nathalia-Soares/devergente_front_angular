@@ -43,9 +43,9 @@ export class CriarPostagemComponent {
     private dialog: MatDialog,
     private dialogRef: MatDialogRef<CriarPostagemComponent>) {
 
-      if(this.data) {
-        this.editar = this.data.editar;
-      }
+    if (this.data) {
+      this.editar = this.data.editar;
+    }
 
     this.formPostagem = this.formBuilder.group({
       id: [0],
@@ -55,13 +55,13 @@ export class CriarPostagemComponent {
         username: [''],
         img_perfil: ['']
       }),
-      conteudo: ['', [Validators.required, Validators.minLength(3)]],
+      conteudo: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(512)]],
       imagemUrl: ['', this.validarImagemUrl],
       data: [new Date().toLocaleString]
     });
   }
 
-  
+
   imagemCarregadaPost(event: Event): void {
     const target = event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
@@ -73,7 +73,7 @@ export class CriarPostagemComponent {
       });
     }
   }
-  
+
   validarImagemUrl(control: AbstractControl): ValidationErrors | null {
     const url = control.value;
     if (!url) {
@@ -104,17 +104,17 @@ export class CriarPostagemComponent {
   editarPostagem() {
     if (this.editar && this.editar.id) {
       this.service.editarPostagem(this.formPostagem.value, this.editar.id)
-      .subscribe({
-        next:(res) => {
-          alert("Sua postagem foi atualizada com sucesso");
-          this.formPostagem.reset();
-          this.dialogRef.close('postagem atualizada');
-          location.reload();
-        },
-        error:() => {
-          alert("Erro ao atualizar a postagem")
-        }
-      })
+        .subscribe({
+          next: (res) => {
+            alert("Sua postagem foi atualizada com sucesso");
+            this.formPostagem.reset();
+            this.dialogRef.close('postagem atualizada');
+            location.reload();
+          },
+          error: () => {
+            alert("Erro ao atualizar a postagem")
+          }
+        })
     }
   }
 
@@ -123,6 +123,19 @@ export class CriarPostagemComponent {
       this.acaoHeader = "Editar postagem"
       this.formPostagem.controls['conteudo'].setValue(this.editar.conteudo);
       this.formPostagem.controls['imagemUrl'].setValue(this.editar.imagemUrl);
+    }
+
+    const usuarioString = localStorage.getItem('usuario');
+    if (usuarioString) {
+      const usuario = JSON.parse(usuarioString);
+      this.formPostagem.patchValue({
+        usuario: {
+          id: usuario.id,
+          nome: usuario.nome,
+          username: usuario.username,
+          img_perfil: usuario.img_perfil
+        }
+      });
     }
   }
 }

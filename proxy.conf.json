@@ -1,0 +1,49 @@
+{
+    "/comentario": {
+      "target": "http://localhost:3000",
+      "secure": false,
+      "changeOrigin": true
+    },
+
+    "/curriculum": {
+      "target": "http://localhost:3000",
+      "secure": false,
+      "changeOrigin": true
+    },
+
+    "/postagem/*": {
+      "target": "http://localhost:3000",
+      "secure": false,
+      "changeOrigin": true
+    },
+
+    "/perfil/upload": {
+      "target": "http://localhost:3000",
+      "secure": false,
+      "changeOrigin": true
+    },
+
+    "/postagem/:id/comentarios": {
+      "target": "http://localhost:3000",
+      "secure": false,
+      "changeOrigin": true
+    },
+
+    "/postagem/upload": {
+      "target": "http://localhost:3000",
+      "secure": false,
+      "changeOrigin": true
+    },
+
+    "/usuario": {
+      "target": "http://localhost:3000",
+      "secure": false,
+      "changeOrigin": true
+    },
+
+    "/vaga": {
+      "target": "http://localhost:3000",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }

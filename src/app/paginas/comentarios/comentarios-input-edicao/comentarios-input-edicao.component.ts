@@ -51,28 +51,35 @@ export class ComentariosInputEdicaoComponent {
     private postagemService: PostagensService,
     private router: Router,
     private route: ActivatedRoute) {
-      this.formularioEdicaoComentario = this.fb.group({
+    this.formularioEdicaoComentario = this.fb.group({
+      id: 0,
+      postagem: {
         id: 0,
-        postagem: {
-          id: 0,
-        },
-        usuario: {
-          id: 0,
-          username: '',
-          img_perfil: '',
-        },
-        conteudo: ['', [Validators.required, Validators.maxLength(255)]],
-        data: new Date()
-      });
+      },
+      usuario: {
+        id: 0,
+        username: '',
+        img_perfil: '',
+      },
+      conteudo: ['', [Validators.required, Validators.maxLength(512)]],
+      data: new Date()
+    });
   }
-  
+
   ngOnInit() {
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+
     if (this.comentarioId !== undefined && this.comentarioId !== null) {
       this.comentarioService.buscarPorId(this.comentarioId).subscribe((comentario) => {
         this.formularioEdicaoComentario.patchValue({
           id: comentario.id,
           postagem: {
             id: comentario.postagem.id,
+          },
+          usuario: {
+            id: usuario.id,
+            username: usuario.username,
+            img_perfil: usuario.img_perfil,
           },
           conteudo: comentario.conteudo
         });
@@ -82,7 +89,7 @@ export class ComentariosInputEdicaoComponent {
 
   editarComentario() {
     const id = this.formularioEdicaoComentario.get('id')?.value;
-  
+
     if (id) {
       this.comentarioService.buscarPorId(id).subscribe((comentarioExistente) => {
         const novoComentario = {
@@ -94,7 +101,7 @@ export class ComentariosInputEdicaoComponent {
             img_perfil: comentarioExistente.usuario.img_perfil,
           },
         };
-  
+
         this.comentarioService.editarComentario(novoComentario, id).subscribe((res: any) => {
           alert("Comentário editado com sucesso!");
           this.formularioEdicaoComentario.reset();

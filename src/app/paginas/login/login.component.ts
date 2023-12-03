@@ -39,6 +39,7 @@ export class LoginComponent {
           const usuario = usuarios[0];
           if (usuario.senha === loginData.senha) {
             alert("Login realizado com sucesso");
+            localStorage.setItem('usuario', JSON.stringify(usuario)); 
             setTimeout(() => {
               this.router.navigate(['feed']);
             }, 3000);

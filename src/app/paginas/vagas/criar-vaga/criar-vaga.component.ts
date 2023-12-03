@@ -24,12 +24,14 @@ export class CriarVagaComponent {
 
   ngOnInit() {
 
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+
     this.formularioVaga = this.formBuilder.group({
       usuario: this.formBuilder.group({
-        id: [''],
-        nome: [''],
-        username: [''],
-        img_perfil: [''],
+        id: [usuario.id || ''],
+        nome: [usuario.nome || ''],
+        username: [usuario.username || ''],
+        img_perfil: [usuario.img_perfil || ''],
       }),
       data_abertura: [''],
       data_fechamento: [''],

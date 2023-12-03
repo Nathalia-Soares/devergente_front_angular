@@ -26,7 +26,7 @@ export class NavRodapeComponent {
   }
 
   perfilUsuario() {
-    this.router.navigate(['/perfil/9']);
+    this.router.navigate(['/perfil/:id']);
   }
 
   menuVagas() {

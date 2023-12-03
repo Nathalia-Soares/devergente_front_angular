@@ -11,15 +11,19 @@ import { validadorUnicaSelecao } from 'src/app/enviroments/unica-selecao';
 })
 export class MenuCurriculumVagasComponent {
   public formularioMenu!: FormGroup;
+  public tipoPerfil: number = 0;
 
-  constructor(private formBuilder: FormBuilder, 
-    private http: HttpClient, 
+  constructor(private formBuilder: FormBuilder,
+    private http: HttpClient,
     private router: Router) {
-
   }
 
   ngOnInit() {
-    this.formularioMenu = this.formBuilder.group ({
+
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+    this.tipoPerfil = usuario.tipo_perfil;
+
+    this.formularioMenu = this.formBuilder.group({
       curriculum: [false],
       vagas: [false]
     }, { validators: validadorUnicaSelecao });
@@ -28,18 +32,18 @@ export class MenuCurriculumVagasComponent {
   tipoCurriculumVagas() {
     let curriculum = this.formularioMenu.get('curriculum')?.value;
     let vagas = this.formularioMenu.get('vagas')?.value;
-  
+
     if (this.formularioMenu.errors?.['multipleSelection']) {
       window.alert('Não foi possível prosseguir, pois houve mais de uma opção selecionada');
       location.reload();
       return;
     }
-  
+
     if (curriculum) {
       this.router.navigate(['menu-curriculum']);
     } else if (vagas) {
       this.router.navigate(['menu-vagas']);
-    } 
+    }
   }
 
   cancelar() {

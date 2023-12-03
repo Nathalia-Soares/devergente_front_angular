@@ -1,5 +1,11 @@
 <app-nav-cabecalho></app-nav-cabecalho>
 <section class="perfil-usuario">
+<section [ngClass]="{
+    'perfil-usuario-neurodivergente': usuario.tipo_perfil == 1,
+    'perfil-usuario-familiar': usuario.tipo_perfil == 2,
+    'perfil-usuario-profissional': usuario.tipo_perfil == 3,
+    'perfil-usuario-empregador': usuario.tipo_perfil == 4
+  }">
     <div class="conteudo-perfil">
         <div class="capa-perfil"
             style="background-image: url('https://i0.wp.com/worldgbctourevent.fr/wp-content/uploads/2018/01/banner-bg-1.jpg?ssl=1');">
@@ -14,7 +20,10 @@
             </div>
             <div class="dados-perfil">
                 <h4 class="titulo-usuario">{{ usuario.nome }}</h4>
-                <h2 class="titulo-perfil">Eu sou &#35;Neurodivergente</h2>
+                <h2 class="titulo-perfil" *ngIf="usuario.tipo_perfil == 1">Eu sou &#35;Neurodivergente</h2>
+                <h2 class="titulo-perfil" *ngIf="usuario.tipo_perfil == 2">Eu sou &#35;Familiar</h2>
+                <h2 class="titulo-perfil" *ngIf="usuario.tipo_perfil == 3">Eu sou &#35;Profissional</h2>
+                <h2 class="titulo-perfil" *ngIf="usuario.tipo_perfil == 4">Eu sou &#35;Empregador</h2>
                 <p class="bio-usuario">{{ usuario.bio }}</p>
                 <ul class="lista-perfil">
                     <li>32 Publicações</li>

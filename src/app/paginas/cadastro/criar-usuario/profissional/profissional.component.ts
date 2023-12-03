@@ -36,10 +36,13 @@ export class ProfissionalComponent {
 
   ngOnInit() {
     this.formularioCadastro = this.formBuilder.group({
-      nome: ['',[Validators.required]],
-      username: ['',[Validators.required, Validators.pattern(/^[^\s]*$/)]],
-      email: ['',[Validators.required, Validators.email]],
-      senha: ['',[Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]],
+      nome: ['',[Validators.required, Validators.maxLength(196)]],
+      username: ['',[Validators.required, Validators.pattern(/^[^\s]*$/), Validators.maxLength(32)]],
+      email: ['',[Validators.required, Validators.email, Validators.maxLength(100)]],
+      senha: ['',[Validators.required, 
+        Validators.minLength(8), 
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/),
+        Validators.maxLength(16)]],
       data_nascimento: ['',[Validators.required]],
       tipo_perfil: 3,
       tipo_profissional: ['',[Validators.required]],

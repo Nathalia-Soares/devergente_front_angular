@@ -1,41 +1,46 @@
 <app-nav-cabecalho></app-nav-cabecalho>
 <div class="bg-fundo">
     <div class="bg">
-        <div class="cadastro">
-            <div class="cadastro-conteudo">
-                <form [formGroup]="formularioMenu" (ngSubmit)="tipoCurriculumVagas()">
-                    <div class="box">
-                        <section class="app">
-                            <h3 class="gray-color">Você quer acessar: </h3>
-                            <article class="curriculum">
-                                <input type="checkbox" id="curriculum" formControlName="curriculum" />
-                                <div>
-                                    <span>
-                                        Curriculum
-                                    </span>
-                                </div>
-                            </article>
+        <div *ngIf="tipoPerfil === 2 || tipoPerfil === 3">
+            Você não tem acesso à esta funcionalidade.
+        </div>
+        <div *ngIf="tipoPerfil !== 2 && tipoPerfil !== 3">
+            <div class="cadastro">
+                <div class="cadastro-conteudo">
+                    <form [formGroup]="formularioMenu" (ngSubmit)="tipoCurriculumVagas()">
+                        <div class="box">
+                            <section class="app">
+                                <h3 class="gray-color">Você quer acessar: </h3>
+                                <article class="curriculum">
+                                    <input type="checkbox" id="curriculum" formControlName="curriculum" />
+                                    <div>
+                                        <span>
+                                            Curriculum
+                                        </span>
+                                    </div>
+                                </article>
 
-                            <article class="vagas">
-                                <input type="checkbox" id="vagas" formControlName="vagas" />
-                                <div>
-                                    <span>
-                                        Vagas
-                                    </span>
-                                </div>
-                            </article>
-                        </section>
-                    </div>
+                                <article class="vagas">
+                                    <input type="checkbox" id="vagas" formControlName="vagas" />
+                                    <div>
+                                        <span>
+                                            Vagas
+                                        </span>
+                                    </div>
+                                </article>
+                            </section>
+                        </div>
 
-                    <div class="alertas-input" *ngIf="formularioMenu.errors?.['multipleSelection']">
-                        Não é possível selecionar mais de uma opção.
-                    </div>
+                        <div class="alertas-input" *ngIf="formularioMenu.errors?.['multipleSelection']">
+                            Não é possível selecionar mais de uma opção.
+                        </div>
 
-                    <div class="btn-opcoes">
-                        <button mat-raised-button type="button" (click)="cancelar()">Cancelar</button>
-                        <button mat-raised-button type="submit">OK</button>
-                    </div>
-                </form>
+                        <div class="btn-opcoes">
+                            <button mat-raised-button type="button" (click)="cancelar()">Cancelar</button>
+                            <button mat-raised-button type="submit">OK</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

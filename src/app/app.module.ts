@@ -12,7 +12,7 @@ import { NavCabecalhoComponent } from './nav-cabecalho/nav-cabecalho.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { CadastroComponent } from './paginas/cadastro/criar-usuario/cadastro.component';
 import { ResetSenhaComponent } from './paginas/reset-senha/reset-senha/reset-senha.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VerificacaoEmailComponent } from './paginas/verificacao-email/verificacao-email/verificacao-email.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -119,6 +119,7 @@ import { MenuCurriculumComponent } from './paginas/curriculum/menu-curriculum/me
     ImageCropperModule,
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
     { provide: MAT_DATE_FORMATS, useValue: {
       parse: {
@@ -129,7 +130,7 @@ import { MenuCurriculumComponent } from './paginas/curriculum/menu-curriculum/me
         monthYearLabel: {year: 'numeric', month: 'short'},
         dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
         monthYearA11yLabel: {year: 'numeric', month: 'long'},
-      }
+      },
     }}
   ],
   bootstrap: [AppComponent],
