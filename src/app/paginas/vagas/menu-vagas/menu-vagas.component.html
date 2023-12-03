@@ -1,0 +1,62 @@
+<app-nav-cabecalho></app-nav-cabecalho>
+<div class="bg-fundo">
+    <div class="bg">
+        <div class="cadastro">
+            <div class="cadastro-conteudo">
+                <form [formGroup]="formularioVagas" (ngSubmit)="tipoVaga()">
+                    <div class="box">
+                        <section class="app">
+                            <h3 class="gray-color">Você quer acessar: </h3>
+                            <article class="criar-vaga">
+                                <input type="checkbox" id="criar-vaga" formControlName="criar-vaga" />
+                                <div>
+                                    <span>
+                                        Criar Vaga
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="ver-vaga">
+                                <input type="checkbox" id="ver-vaga" formControlName="ver-vaga" />
+                                <div>
+                                    <span>
+                                        Ver Vaga
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="editar-vaga">
+                                <input type="checkbox" id="editar-vaga" formControlName="editar-vaga" />
+                                <div>
+                                    <span>
+                                        Editar Vaga
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="excluir-vaga">
+                                <input type="checkbox" id="excluir-vaga" formControlName="excluir-vaga" />
+                                <div>
+                                    <span>
+                                        Excluir Vaga
+                                    </span>
+                                </div>
+                            </article>
+
+                        </section>
+                    </div>
+
+                    <div class="alertas-input" *ngIf="formularioVagas.errors?.['multipleSelection']">
+                        Não é possível selecionar mais de uma opção.
+                    </div>
+
+                    <div class="btn-opcoes">
+                        <button mat-raised-button type="button" (click)="cancelar()">Cancelar</button>
+                        <button mat-raised-button type="submit">OK</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-nav-rodape></app-nav-rodape>

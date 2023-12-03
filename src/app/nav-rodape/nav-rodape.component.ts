@@ -28,4 +28,8 @@ export class NavRodapeComponent {
   perfilUsuario() {
     this.router.navigate(['/perfil/9']);
   }
+
+  menuVagas() {
+    this.router.navigate(['/menu-curriculum-vagas']);
+  }
 }

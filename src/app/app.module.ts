@@ -53,6 +53,9 @@ import { ComentariosComponent } from './paginas/comentarios/comentarios/comentar
 import { ComentarioComponent } from './paginas/comentarios/comentario/comentario.component';
 import { ComentariosInputComponent } from './paginas/comentarios/comentarios-input/comentarios-input.component';
 import { ComentariosInputEdicaoComponent } from './paginas/comentarios/comentarios-input-edicao/comentarios-input-edicao.component';
+import { MenuCurriculumVagasComponent } from './paginas/menu-curriculum-vagas/menu-curriculum-vagas.component';
+import { MenuVagasComponent } from './paginas/vagas/menu-vagas/menu-vagas.component';
+import { MenuCurriculumComponent } from './paginas/curriculum/menu-curriculum/menu-curriculum.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +93,10 @@ import { ComentariosInputEdicaoComponent } from './paginas/comentarios/comentari
     ComentarioComponent,
     ComentariosInputComponent,
     ComentariosInputEdicaoComponent,
-    FeedPostagensComponent
+    FeedPostagensComponent,
+    MenuCurriculumVagasComponent,
+    MenuVagasComponent,
+    MenuCurriculumComponent
   ],
   imports: [
     CommonModule,

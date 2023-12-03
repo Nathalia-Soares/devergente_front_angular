@@ -9,7 +9,7 @@ import { environment } from './../enviroments/enviroments';
 })
 export class UsuarioService {
 
-    private readonly API = `${environment.API_URL}/perfil`
+    private readonly API = `${environment.API_URL}/usuario`
 
     constructor(private http: HttpClient) { }
 

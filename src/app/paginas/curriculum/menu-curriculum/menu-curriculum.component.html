@@ -1,0 +1,62 @@
+<app-nav-cabecalho></app-nav-cabecalho>
+<div class="bg-fundo">
+    <div class="bg">
+        <div class="cadastro">
+            <div class="cadastro-conteudo">
+                <form [formGroup]="formularioCurriculum" (ngSubmit)="tipoCurriculum()">
+                    <div class="box">
+                        <section class="app">
+                            <h3 class="gray-color">Você quer acessar: </h3>
+                            <article class="criar-curriculum">
+                                <input type="checkbox" id="criar-curriculum" formControlName="criar-curriculum" />
+                                <div>
+                                    <span>
+                                        Criar Curriculum
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="ver-curriculum">
+                                <input type="checkbox" id="ver-curriculum" formControlName="ver-curriculum" />
+                                <div>
+                                    <span>
+                                        Ver Curriculum
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="editar-curriculum">
+                                <input type="checkbox" id="editar-curriculum" formControlName="editar-curriculum" />
+                                <div>
+                                    <span>
+                                        Editar Curriculum
+                                    </span>
+                                </div>
+                            </article>
+
+                            <article class="excluir-curriculum">
+                                <input type="checkbox" id="excluir-curriculum" formControlName="excluir-curriculum" />
+                                <div>
+                                    <span>
+                                        Excluir Curriculum
+                                    </span>
+                                </div>
+                            </article>
+
+                        </section>
+                    </div>
+
+                    <div class="alertas-input" *ngIf="formularioCurriculum.errors?.['multipleSelection']">
+                        Não é possível selecionar mais de uma opção.
+                    </div>
+
+                    <div class="btn-opcoes">
+                        <button mat-raised-button type="button" (click)="cancelar()">Cancelar</button>
+                        <button mat-raised-button type="submit">OK</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-nav-rodape></app-nav-rodape>

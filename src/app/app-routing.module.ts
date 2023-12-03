@@ -25,6 +25,9 @@ import { EditarVagaComponent } from './paginas/vagas/editar-vaga/editar-vaga.com
 import { ExcluirVagaComponent } from './paginas/vagas/excluir-vaga/excluir-vaga.component';
 import { ComentariosComponent } from './paginas/comentarios/comentarios/comentarios.component';
 import { FeedPostagensComponent } from './paginas/postagens/feed-postagens/feed-postagens/feed-postagens.component';
+import { MenuCurriculumVagasComponent } from './paginas/menu-curriculum-vagas/menu-curriculum-vagas.component';
+import { MenuCurriculumComponent } from './paginas/curriculum/menu-curriculum/menu-curriculum.component';
+import { MenuVagasComponent } from './paginas/vagas/menu-vagas/menu-vagas.component';
 
 const routes: Routes = [
   {
@@ -87,6 +90,18 @@ const routes: Routes = [
   {
     path: 'criar-postagem',
     component: CriarPostagemComponent
+  },
+  {
+    path: 'menu-curriculum-vagas',
+    component: MenuCurriculumVagasComponent
+  },
+  {
+    path: 'menu-curriculum',
+    component: MenuCurriculumComponent
+  },
+  {
+    path: 'menu-vagas',
+    component: MenuVagasComponent
   },
   {
     path: 'criar-curriculum',

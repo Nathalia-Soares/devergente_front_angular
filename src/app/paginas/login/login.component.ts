@@ -31,7 +31,7 @@ export class LoginComponent {
       senha: this.login.value.senha
     };
   
-    this.http.get<any[]>(`http://localhost:3000/perfil?email=${loginData.email}`)
+    this.http.get<any[]>(`http://localhost:3000/usuario?email=${loginData.email}`)
       .subscribe(usuarios => {
         if (usuarios.length === 0) {
           alert("Usuário não encontrado");
